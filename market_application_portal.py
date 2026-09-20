@@ -54,8 +54,9 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# Database Setup
-DB_PATH = "/workspace/scratch/market_applications.db"
+# Database Setup - Portable path for Streamlit Cloud, local execution, and containers
+BASE_DIR = os.path.dirname(os.path.abspath(__file__)) if '__file__' in globals() else os.getcwd()
+DB_PATH = os.path.join(BASE_DIR, "market_applications.db")
 
 def init_db():
     conn = sqlite3.connect(DB_PATH)
